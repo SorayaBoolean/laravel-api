@@ -8,8 +8,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Posts</a>
+                    <li v-for="(item, index) in menuItems" :key="index" class="nav-item">
+                    <a class="nav-link active" aria-current="page" :href="item.link">{{item.label}}</a>
                     </li>  
                 </ul> 
             </div>
@@ -22,7 +22,35 @@
 
     export default {
         name: 'MyHeader',
-    }
+        data (){
+            return {
+                menuItems: [
+                    {
+                        label:'Home',
+                        link:'#'
+                    },
+                    {
+                        label:'Blog',
+                        link:'#'
+                    },
+                    {
+                        label:'About Us',
+                        link:'#'
+                    },
+                    {
+                        label:'Contacts',
+                        link:'#'
+                    }
+                ]
+                
+            }
+        
+
+        }
+       
+
+        } 
+            
 </script>
 
 <style scoped lang="scss">

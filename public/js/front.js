@@ -96,7 +96,24 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'MyHeader'
+  name: 'MyHeader',
+  data: function data() {
+    return {
+      menuItems: [{
+        label: 'Home',
+        link: '#'
+      }, {
+        label: 'Blog',
+        link: '#'
+      }, {
+        label: 'About Us',
+        link: '#'
+      }, {
+        label: 'Contacts',
+        link: '#'
+      }]
+    };
+  }
 });
 
 /***/ }),
@@ -136,13 +153,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("header", [_c("nav", {
     staticClass: "navbar navbar-expand-lg bg-light"
   }, [_c("div", {
@@ -152,7 +162,32 @@ var staticRenderFns = [function () {
     attrs: {
       href: "#"
     }
-  }, [_vm._v("Boolpress")]), _vm._v(" "), _c("button", {
+  }, [_vm._v("Boolpress")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarSupportedContent"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
+  }, _vm._l(_vm.menuItems, function (item, index) {
+    return _c("li", {
+      key: index,
+      staticClass: "nav-item"
+    }, [_c("a", {
+      staticClass: "nav-link active",
+      attrs: {
+        "aria-current": "page",
+        href: item.link
+      }
+    }, [_vm._v(_vm._s(item.label))])]);
+  }), 0)])])])]);
+};
+
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("button", {
     staticClass: "navbar-toggler",
     attrs: {
       type: "button",
@@ -164,22 +199,7 @@ var staticRenderFns = [function () {
     }
   }, [_c("span", {
     staticClass: "navbar-toggler-icon"
-  })]), _vm._v(" "), _c("div", {
-    staticClass: "collapse navbar-collapse",
-    attrs: {
-      id: "navbarSupportedContent"
-    }
-  }, [_c("ul", {
-    staticClass: "navbar-nav me-auto mb-2 mb-lg-0"
-  }, [_c("li", {
-    staticClass: "nav-item"
-  }, [_c("a", {
-    staticClass: "nav-link active",
-    attrs: {
-      "aria-current": "page",
-      href: "#"
-    }
-  }, [_vm._v("Posts")])])])])])])]);
+  })]);
 }];
 render._withStripped = true;
 
