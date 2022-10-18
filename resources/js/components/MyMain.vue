@@ -1,6 +1,12 @@
 <template>
     <div class="container">
-        <div class="row">
+        <div v-if="loading" class="d-flex justify-content-center ">
+            <div class="spinner-grow text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div v-else class="row">
             <h2 class="mb-5">Posts List:</h2>
             <div class="card col-12 mb-5" v-for="(post, index) in posts" :key="index">
                 <div class="card-body">
@@ -22,14 +28,16 @@
          name: 'MyMain',
          data () {
             return {
-                posts: []
+                posts: [],
+                loading: true
             }
          },
          methods: {
             getPosts() {
                axios.get('/api/posts').then((response)=>{
                 this.posts= response.data.results;
-               });
+                this.loading= false;
+            });
             },
             truncateText (text, maxLength) {
                 if (text,length < maxLength) {
