@@ -7,7 +7,7 @@
                     <h5 class="card-title">{{post.title}}</h5>
                     <p class="card-text">{{post.content}}</p>
                     <p class="card-text">{{post.category?post.category.name:'-'}}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="#" class="btn btn-primary">Read post...</a>
                 </div>
             </div>
 
@@ -27,7 +27,7 @@
          },
          methods: {
             getPosts() {
-               axios,get('/api/posts').then((response)=>{
+               axios.get('/api/posts').then((response)=>{
                 this.posts= response.data.results;
                });
             }
