@@ -1951,13 +1951,13 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts() {
       var _this = this;
 
-      axios, get('/api/posts').then(function (response) {
+      axios.get('/api/posts').then(function (response) {
         _this.posts = response.data.results;
       });
     }
   },
   mounted: function mounted() {
-    this.getPost(response.data.result);
+    this.getPosts();
   }
 });
 

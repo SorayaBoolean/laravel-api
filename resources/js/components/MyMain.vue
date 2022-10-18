@@ -33,7 +33,7 @@
             }
          },
          mounted(){
-            this.getPost(response.data.results)
+            this.getPosts();
          }
      }
                
