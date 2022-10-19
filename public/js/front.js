@@ -1945,6 +1945,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       posts: [],
+      currentPage: 1,
+      lastPage: null,
       loading: true
     };
   },
@@ -1952,9 +1954,12 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts() {
       var _this = this;
 
+      this.loading = true;
       axios.get('/api/posts').then(function (response) {
-        _this.posts = response.data.results;
+        _this.posts = response.data.results.data;
         _this.loading = false;
+        _this.current_page = response.data.results.current_page;
+        _this.last_page = response.data.results.last_page;
       });
     },
     truncateText: function truncateText(text, maxLength) {

@@ -29,14 +29,21 @@
          data () {
             return {
                 posts: [],
+                currentPage:1,
+                lastPage: null,
                 loading: true
             }
          },
          methods: {
             getPosts() {
-               axios.get('/api/posts').then((response)=>{
-                this.posts= response.data.results;
+
+                this.loading=true;
+
+                axios.get('/api/posts').then((response)=>{
+                this.posts= response.data.results.data;
                 this.loading= false;
+                this.current_page= response.data.results.current_page;
+                this.last_page= response.data.results.last_page;
             });
             },
             truncateText (text, maxLength) {
