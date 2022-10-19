@@ -1944,7 +1944,8 @@ __webpack_require__.r(__webpack_exports__);
   name: 'MyMain',
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      loading: true
     };
   },
   methods: {
@@ -1953,7 +1954,15 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/api/posts').then(function (response) {
         _this.posts = response.data.results;
+        _this.loading = false;
       });
+    },
+    truncateText: function truncateText(text, maxLength) {
+      if (text.length < maxLength) {
+        return text;
+      } else {
+        return text.substring(0, maxLength) + '...';
+      }
     }
   },
   mounted: function mounted() {
@@ -2071,7 +2080,9 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("div", {
+  }, [_vm.loading ? _c("div", {
+    staticClass: "d-flex justify-content-center"
+  }, [_vm._m(0)]) : _c("div", {
     staticClass: "row"
   }, [_c("h2", {
     staticClass: "mb-5"
@@ -2085,7 +2096,7 @@ var render = function render() {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(post.title))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
-    }, [_vm._v(_vm._s(post.content))]), _vm._v(" "), _c("p", {
+    }, [_vm._v(_vm._s(_vm.truncateText(post.content, 10)))]), _vm._v(" "), _c("p", {
       staticClass: "card-text"
     }, [_vm._v(_vm._s(post.category ? post.category.name : "-"))]), _vm._v(" "), _c("a", {
       staticClass: "btn btn-primary",
@@ -2096,7 +2107,19 @@ var render = function render() {
   })], 2)]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("div", {
+    staticClass: "spinner-grow text-primary",
+    attrs: {
+      role: "status"
+    }
+  }, [_c("span", {
+    staticClass: "visually-hidden"
+  }, [_vm._v("Loading...")])]);
+}];
 render._withStripped = true;
 
 
