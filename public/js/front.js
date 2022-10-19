@@ -2116,7 +2116,8 @@ var render = function render() {
   })], 2), _vm._v(" "), _c("nav", [_c("ul", {
     staticClass: "pagination"
   }, [_c("li", {
-    staticClass: "page-item"
+    staticClass: "page-item",
+    "class": _vm.currentPage == 1 ? "disabled" : ""
   }, [_c("a", {
     staticClass: "page-link",
     attrs: {
@@ -2128,7 +2129,8 @@ var render = function render() {
       }
     }
   }, [_vm._v("Previous")])]), _vm._v(" "), _c("li", {
-    staticClass: "page-item"
+    staticClass: "page-item",
+    "class": _vm.currentPage == _vm.lastPage ? "disabled" : ""
   }, [_c("a", {
     staticClass: "page-link",
     attrs: {

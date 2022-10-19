@@ -21,9 +21,9 @@
 
         <nav >
             <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#" @click="getPosts(currentPage -1)">Previous</a></li>
+                <li class="page-item" :class="(currentPage == 1?'disabled':'')"><a class="page-link" href="#" @click="getPosts(currentPage -1)">Previous</a></li>
                 
-                <li class="page-item"><a class="page-link" href="#" @click="getPosts(currentPage +1)">Next</a></li>
+                <li class="page-item" :class="(currentPage == lastPage?'disabled':'')"><a class="page-link" href="#" @click="getPosts(currentPage +1)">Next</a></li>
             </ul>
         </nav>
     </div>
