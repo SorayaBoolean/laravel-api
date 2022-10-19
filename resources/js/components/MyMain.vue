@@ -18,6 +18,14 @@
             </div>
 
         </div>
+
+        <nav >
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="#" @click="getPosts(currentPage -1)">Previous</a></li>
+                
+                <li class="page-item"><a class="page-link" href="#" @click="getPosts(currentPage +1)">Next</a></li>
+            </ul>
+        </nav>
     </div>
      
  </template>
@@ -35,11 +43,15 @@
             }
          },
          methods: {
-            getPosts() {
+            getPosts(page) {
 
                 this.loading=true;
 
-                axios.get('/api/posts').then((response)=>{
+                axios.get('/api/posts', {
+                    params: {
+                        page: page
+                    }
+                }).then((response)=>{
                 this.posts= response.data.results.data;
                 this.loading= false;
                 this.current_page= response.data.results.current_page;

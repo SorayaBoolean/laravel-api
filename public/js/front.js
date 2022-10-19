@@ -1951,11 +1951,15 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    getPosts: function getPosts() {
+    getPosts: function getPosts(page) {
       var _this = this;
 
       this.loading = true;
-      axios.get('/api/posts').then(function (response) {
+      axios.get('/api/posts', {
+        params: {
+          page: page
+        }
+      }).then(function (response) {
         _this.posts = response.data.results.data;
         _this.loading = false;
         _this.current_page = response.data.results.current_page;
@@ -2109,7 +2113,33 @@ var render = function render() {
         href: "#"
       }
     }, [_vm._v("Read post...")])])]);
-  })], 2)]);
+  })], 2), _vm._v(" "), _c("nav", [_c("ul", {
+    staticClass: "pagination"
+  }, [_c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPage - 1);
+      }
+    }
+  }, [_vm._v("Previous")])]), _vm._v(" "), _c("li", {
+    staticClass: "page-item"
+  }, [_c("a", {
+    staticClass: "page-link",
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPosts(_vm.currentPage + 1);
+      }
+    }
+  }, [_vm._v("Next")])])])])]);
 };
 
 var staticRenderFns = [function () {
